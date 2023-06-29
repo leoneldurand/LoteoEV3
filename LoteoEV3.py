@@ -1,9 +1,9 @@
-# Definición de variables globales
+# Variables
 num_filas = 4
 num_columnas = 5
 precio_por_hectarea = 1000000
 
-# Inicializar matriz de lotes disponibles
+# Matriz de lotes disponibles
 lotes_disponibles = [[' ' for _ in range(num_columnas)] for _ in range(num_filas)]
 
 # Lista de lotes seleccionados por los clientes
@@ -23,9 +23,13 @@ def mostrar_disponibilidad_lotes():
 # Función para seleccionar un lote
 def seleccionar_lote():
     while True:
-        fila = int(input("Ingrese la fila del lote: "))
-        columna = int(input("Ingrese la columna del lote: "))
-
+        
+        try:
+            fila = int(input("Ingrese la fila del lote: "))
+            columna = int(input("Ingrese la columna del lote: "))
+        except ValueError:
+            print("Opción inválida. Intente nuevamente.")
+            continue
         if fila < 0 or fila >= num_filas or columna < 0 or columna >= num_columnas:
             print("Coordenadas inválidas. Intente nuevamente.")
             continue
